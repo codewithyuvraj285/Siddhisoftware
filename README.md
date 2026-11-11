@@ -15,3 +15,8 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 - Moving client logos and "Work delivered for companies" (Admin > Clients): logo + name + what you built. Logos show without any white box.
 - Floating buttons: WhatsApp, Email and the Siddhi logo (chatbot). Email = Admin > Settings > Brand and contact. Icons can be replaced in Settings > Homepage sections and floating buttons.
 - Tip: upload client / technology logos as PNG with transparent background (or WebP) so no white box shows.
+
+## v6
+- Menu is capital letters; only one dropdown stays open at a time (click or hover); click outside / Esc closes it.
+- Hero: fixed-size slider panel (no slide captions). The hero title (Admin > Settings > Hero headline) is centred on the panel. Slides: Admin > Hero slider (image only needed; title/text of a slide are no longer shown).
+- Products now show a cover image on the card. Add/edit in Admin > Products (Main image + content + FAQs).
