@@ -18,5 +18,5 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 
 ## v6
 - Menu is capital letters; only one dropdown stays open at a time (click or hover); click outside / Esc closes it.
-- Hero: fixed-size slider panel (no slide captions). The hero title (Admin > Settings > Hero headline) is centred on the panel. Slides: Admin > Hero slider (image only needed; title/text of a slide are no longer shown).
+- Hero (v7): large slider panel (about 1480x730 on desktop). Only the headline and one button sit on the panel; the badge, coloured line, paragraph and 'See plans & pricing' button were removed. The hero title (Admin > Settings > Hero headline) is centred on the panel. Slides: Admin > Hero slider (image only needed; title/text of a slide are no longer shown).
 - Products now show a cover image on the card. Add/edit in Admin > Products (Main image + content + FAQs).
