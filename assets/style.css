@@ -124,3 +124,15 @@ a{color:inherit}img{max-width:100%;height:auto}:focus-visible{outline:3px solid 
 .pc .pb{display:flex;flex-direction:column;gap:6px;padding:20px 22px 24px;flex:1}
 @media(min-width:981px) and (max-width:1060px){.nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px;border-bottom:1px solid var(--ln)}.nav.on{display:flex}.burger{display:block}.mn{position:static}.mn>div{width:auto}.dd:hover .mn{display:none}.dd.on .mn{display:block}.hin .btn{display:none}}
 @media(max-width:1060px){.tools{margin-left:auto}}
+
+/* ---- v7: bigger hero panel, headline + button inside the panel ---- */
+.hero{padding:22px 0 44px}
+.hero>.w{max-width:1560px}
+.hm{height:clamp(460px,calc(100vh - 150px),780px);border-radius:30px}
+.hov{padding:0 90px}
+.hc{display:flex;flex-direction:column;align-items:center;gap:34px;max-width:100%}
+.hm h1{max-width:13em;font-size:clamp(2.8rem,7.4vw,6.6rem)}
+.hc .acts{display:flex;justify-content:center;margin-top:0;pointer-events:auto;animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both}
+.hc .acts .btn{padding:17px 38px;font-size:1.08rem;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+@media(max-width:980px){.hero>.w{max-width:100%}.hm{height:clamp(360px,88vw,560px);border-radius:24px}.hov{padding:0 24px}.hc{gap:24px}.hm h1{font-size:clamp(2.2rem,9.5vw,4rem)}.hc .acts .btn{padding:14px 28px;font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.hc .acts{animation:none}}
