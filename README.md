@@ -28,3 +28,21 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 ## v10
 - New hero: "Choose your business" solution picker (assets/app.js, `HX` list at the top of the hero code). Edit business names, sample numbers and benefit lines there. It auto-plays every 5 s, pauses on hover, and links to the matching product. The old image slider is no longer shown on the home page.
 - Lighter type (300/400 weights) and Deloitte-style white cards: short title, 3-line description, tag line, image at the bottom. Long descriptions are auto-trimmed in app.js (`cut`).
+
+## v16
+- 22 new blog posts in demo-data.js (one per product and case study), each with an FAQ, SEO fields and a related product/case-study link. With the backend running, these come from /api/public; demo-data.js is the no-backend fallback.
+
+## v17
+- Creative Infosys-style SVG images in `assets/img/creative/`: 19 product images, 3 case-study images and a stylized `Siddhi` hero wordmark. The hero shows the wordmark image when `heroWordImage` is set in Admin > Settings; clear it to fall back to text.
+
+## v18
+- 15 supplied tech PNGs in `assets/img/user-tech/` are used as product cover images. The hero now uses `assets/img/creative/glossy-orange-siddhi-wordmark.png`. Asset URLs use `?v=18` for cache busting.
+
+## v19
+- Long, point-wise descriptions for every product and all 7 Industries, matching the Mobile App Development format. The hero "Siddhi" wordmark is now smaller and sits beside the Siddhi Softwares logo. Asset URLs use `?v=19` for cache busting.
+
+## v20
+- Labels, list headings, contact forms, section visibility and the chatbot are all driven by admin settings. See backend README for the full key list. The frontend keeps safe defaults in code so static/demo mode still looks complete.
+- The chatbot reads `chatText`, `chatKB` and `chatShow` from `window.SITE_DB.settings` and refreshes on the `sitedata` event; no code edit is needed to change its name, answers or quick replies.
+- Hidden homepage sections use the `hidden` attribute plus `[hidden]{display:none!important}` in `style.css`.
+- All script/style tags use `?v=20` so browsers pick up the new files.
