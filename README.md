@@ -24,3 +24,7 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 ## v9
 - SEO fields from Admin are now applied on the pages: meta description, keywords, canonical, noindex, Open Graph / Twitter tags, Search Console / Bing codes, Organization JSON-LD, Google Analytics and custom head code (GA and custom code are skipped on localhost).
 - The site always fetches fresh data from the backend (no 15 s cache). If the backend is not running on localhost, a red bar tells you instead of silently showing demo content.
+
+## v10
+- New hero: "Choose your business" solution picker (assets/app.js, `HX` list at the top of the hero code). Edit business names, sample numbers and benefit lines there. It auto-plays every 5 s, pauses on hover, and links to the matching product. The old image slider is no longer shown on the home page.
+- Lighter type (300/400 weights) and Deloitte-style white cards: short title, 3-line description, tag line, image at the bottom. Long descriptions are auto-trimmed in app.js (`cut`).
