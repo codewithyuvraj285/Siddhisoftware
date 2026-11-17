@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="Siddhi">
+<defs>
+<linearGradient id="w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b3d91"/><stop offset="0.5" stop-color="#0b6fc4"/><stop offset="1" stop-color="#00d0ff"/></linearGradient>
+<filter id="g"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0b3d91" flood-opacity="0.45"/></filter>
+</defs>
+<text x="600" y="292" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="270" font-weight="700" letter-spacing="-14" fill="#f6a200" opacity="0.35" filter="url(#g)">Siddhi</text>
+<text x="600" y="280" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="270" font-weight="700" letter-spacing="-14" fill="url(#w)" stroke="#ffffff" stroke-width="3" paint-order="stroke" filter="url(#g)">Siddhi</text>
+<path d="M360 340 C 480 370, 720 370, 840 340" fill="none" stroke="#00a6d6" stroke-width="10" stroke-linecap="round" opacity="0.8"/>
+<circle cx="600" cy="350" r="12" fill="#f6a200"/>
+</svg>
