@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Abstract illustration of artificial intelligence transforming business">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#180729"/><stop offset="0.55" stop-color="#3a0d58"/><stop offset="1" stop-color="#1a0530"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#e050c0" stop-opacity=".45"/><stop offset="1" stop-color="#e050c0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f6a200" stop-opacity=".5"/><stop offset="1" stop-color="#f6a200" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#f6a200"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#ffffff" stop-opacity=".02"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="880" cy="300" r="380" fill="url(#halo)"/>
+  <circle cx="360" cy="500" r="300" fill="url(#halo2)"/>
+  <g opacity=".13" stroke="#ffffff"><path d="M0 180H1280M0 360H1280M0 540H1280M320 0V720M640 0V720M960 0V720"/></g>
+
+  <!-- human silhouette, left -->
+  <g transform="translate(330 380)" fill="url(#glass)" stroke="#ffd88a" stroke-opacity=".55" stroke-width="2">
+    <circle cx="0" cy="-90" r="76"/>
+    <path d="M-118 200c0-104 52-166 118-166s118 62 118 166z"/>
+  </g>
+  <path d="M430 300c60 10 100 30 140 60" fill="none" stroke="#f6a200" stroke-width="3" stroke-dasharray="8 10" opacity=".7"/>
+
+  <!-- neural brain, right -->
+  <g transform="translate(820 320)">
+    <circle r="205" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+    <circle r="165" fill="none" stroke="#e9a7ff" stroke-opacity=".25" stroke-width="1.5" stroke-dasharray="5 12"/>
+    <g fill="none" stroke="#f6a200" stroke-opacity=".7" stroke-width="2.5">
+      <path d="M-130-40L-70-110-10-60 50-120 120-50 90 30 130 90 40 130-30 90-100 130-140 50z"/>
+      <path d="M-70-110L-30 10 50-120M-10-60L-30 10 40 130M-30 10L90 30 130 90M-10-60L50-120M-70-110L-140 50"/>
+      <path d="M-100 130L-30 10 90 30M120-50L90 30"/>
+    </g>
+    <g fill="url(#amber)">
+      <circle cx="-130" cy="-40" r="9"/><circle cx="-70" cy="-110" r="11"/><circle cx="-10" cy="-60" r="8"/>
+      <circle cx="50" cy="-120" r="12"/><circle cx="120" cy="-50" r="9"/><circle cx="90" cy="30" r="11"/>
+      <circle cx="130" cy="90" r="8"/><circle cx="40" cy="130" r="10"/><circle cx="-30" cy="90" r="8"/>
+      <circle cx="-100" cy="130" r="9"/><circle cx="-140" cy="50" r="7"/><circle cx="-30" cy="10" r="14"/>
+    </g>
+    <circle cx="-30" cy="10" r="24" fill="#f6a200" opacity=".55" filter="url(#soft)"/>
+  </g>
+
+  <!-- growth arrows / adoption -->
+  <g transform="translate(170 550)">
+    <rect width="330" height="100" rx="18" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".2"/>
+    <path d="M28 72l54-26 46 12 62-38 62 10" fill="none" stroke="url(#amber)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M224 20l28 10-10 28" fill="none" stroke="#f6a200" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#ffd88a" opacity=".8"><circle cx="1050" cy="580" r="6"/><circle cx="1110" cy="540" r="5"/><circle cx="1160" cy="590" r="6"/></g>
+  <path d="M1050 580l60-40 50 50" fill="none" stroke="#ffd88a" stroke-opacity=".4" stroke-width="2"/>
+</svg>
