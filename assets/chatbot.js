@@ -4,8 +4,10 @@
 (()=>{
 if(window.__skChat)return;window.__skChat=1;
 const C=window.SITE_CONFIG||{},API=(C.API_BASE||'').replace(/\/$/,''),K='sk_chat_v1';
-let S={sid:'',msgs:[],step:'',lead:{}},queue=[],busy=false;
+let S={sid:'',msgs:[],step:'',lead:{}},queue=[],busy=false,typingTimer=null;
 try{S=Object.assign(S,JSON.parse(localStorage[K]||'{}'))}catch(e){}
+if(!Array.isArray(S.msgs))S.msgs=[];
+if(!S.lead||typeof S.lead!=='object'||Array.isArray(S.lead))S.lead={};
 const uid=()=>crypto.randomUUID?crypto.randomUUID():'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,10);
 if(!/^[A-Za-z0-9_-]{8,64}$/.test(S.sid||''))S.sid=uid();
 const save=()=>{try{localStorage[K]=JSON.stringify(S)}catch(e){}};
@@ -65,10 +67,20 @@ function refresh(){
 window.addEventListener('sitedata',refresh);
 refresh();
 
+/* A conversation is temporary: every new page load starts a fresh chat. */
+function resetChat(){
+ if(typingTimer){clearTimeout(typingTimer);typingTimer=null}
+ busy=false;queue=[];
+ S.msgs=[];S.step='';S.lead={};S.sid=uid();
+ if(log)log.replaceChildren();if(qr)qr.replaceChildren();if(inp)inp.value='';
+ save();
+}
+resetChat();
+
 const bubble=(r,t)=>{const b=el('div','skc-m '+r,t);log.append(b);log.scrollTop=log.scrollHeight};
 const quick=a=>{qr.replaceChildren(...a.map(t=>{const b=el('button',null,t);b.type='button';b.onclick=()=>user(t);return b}));log.scrollTop=log.scrollHeight};
 function say(t,q){S.msgs.push({role:'bot',text:t});queue.push({role:'bot',text:t});bubble('bot',t);if(q)quick(q);else qr.replaceChildren();save();flush()}
-const later=(t,q)=>{busy=true;const d=el('div','skc-m bot typing','…');log.append(d);log.scrollTop=log.scrollHeight;setTimeout(()=>{d.remove();busy=false;say(t,q)},450)};
+const later=(t,q)=>{busy=true;const d=el('div','skc-m bot typing','…');log.append(d);log.scrollTop=log.scrollHeight;typingTimer=setTimeout(()=>{typingTimer=null;d.remove();busy=false;say(t,q)},450)};
 const STOP=/^(development|application|services?|software|management|solutions?|online|your|and|for|with|the)$/;
 function match(t){
  for(const [re,ans] of KB)if(re.test(t)){
@@ -108,6 +120,7 @@ function user(t){t=t.trim();if(!t||busy)return;S.msgs.push({role:'customer',text
 function open(){const p=$('skp');p.hidden=false;$('skb').hidden=true;
  if(!S.msgs.length){const g=TX('greeting','Namaste! I am the {name}. How can I help you today?');S.msgs.push({role:'bot',text:g});queue.push({role:'bot',text:g});save()}
  log.replaceChildren();S.msgs.forEach(m=>bubble(m.role,m.text));if(S.msgs.length<2)quick(menu());inp.focus()}
-$('skb').onclick=open;$('skx').onclick=()=>{$('skp').hidden=true;$('skb').hidden=false};$('skf').onsubmit=e=>{e.preventDefault();user(inp.value)};
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('skp').hidden)$('skx').onclick()});
+function close(){const p=$('skp');p.hidden=true;$('skb').hidden=false;resetChat();$('skb').focus()}
+$('skb').onclick=open;$('skx').onclick=close;$('skf').onsubmit=e=>{e.preventDefault();user(inp.value)};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('skp').hidden)close()});
 })();
