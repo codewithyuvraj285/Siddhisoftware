@@ -42,10 +42,7 @@ const fab=s=>{if(s.showFab===false)return'';const wa=String(s.whatsapp||s.phone|
 const HX0=[
 {n:'Transport and logistics',m:'Truck',app:'Truck tracking',k:[['Trips today',48,'',''],['Trucks live',126,'',''],['Bills ready',6.4,'₹','L']],b:[40,62,48,80,58,92,70,100],o:['Every truck on one live map','Booking to billing, no paperwork','Driver and trip reports on your phone']},
 {n:'Schools',m:'School',app:'School management',k:[['Students',1240,'',''],['Fees collected',92,'','%'],['Attendance today',96,'','%']],b:[70,74,72,88,84,90,86,96],o:['Admission to result in one app','Fee reminders go out by themselves','Parents see attendance on mobile']},
-{n:'Coaching institutes',m:'Exam',app:'Online exam portal',k:[['Tests this month',36,'',''],['Students',820,'',''],['Average score',74,'','%']],b:[30,46,52,60,58,72,78,90],o:['Timed mock tests, like the real exam','Results the moment students submit','Rank lists without Excel']},
 {n:'Clinics and hospitals',m:'Clinic',app:'Clinic management',k:[['Appointments',64,'',''],['Patients seen',52,'',''],['Billed today',38,'₹','K']],b:[50,66,58,76,70,84,64,88],o:['Appointments without phone calls','Patient history in two taps','Bills and reports in one place']},
-{n:'Shops and online stores',m:'E-commerce',app:'Online store',k:[['Orders',128,'',''],['Sales',4.8,'₹','L'],['To dispatch',9,'','']],b:[28,40,56,52,74,70,88,100],o:['Catalogue, cart and payments ready','Order tracking for your customers','Stock and billing stay in sync']},
-{n:'Direct selling and MLM',m:'MLM',app:'MLM software',k:[['Members',3420,'',''],['Payouts',12.6,'₹','L'],['Levels',7,'','']],b:[22,34,48,60,72,80,92,100],o:['Unilevel, binary or your own plan','Member trees you can open and read','Payouts calculated automatically']},
 {n:'Industry and power',m:'IoT',app:'Plant monitoring',k:[['Sensors online',240,'',''],['Alerts open',3,'',''],['Uptime',99,'','%']],b:[90,92,88,94,96,92,98,99],o:['Live readings from every site','Alerts before a fault becomes a stop','Daily reports without a site visit']}
 ];
 let HX=HX0;

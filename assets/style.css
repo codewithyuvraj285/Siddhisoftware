@@ -257,3 +257,10 @@ body[data-page=home] .ibtn{background:rgba(255,255,255,.08);border-color:rgba(25
 @media(max-width:980px){.logo span.brand-text{font-size:1.25rem}}
 @media(max-width:420px){.logo span.brand-text{font-size:1.02rem}}
 @media(min-width:981px) and (max-width:1360px){.logo span.brand-text{font-size:1.1rem}}
+
+/* v23: logo-image font (bold serif, wide spacing) for the menu brand and the "Siddhi software help's you" heading */
+.logo span.brand-text{font-family:'Caladea','Cambria','Georgia',serif;font-weight:700;font-size:1.5rem;letter-spacing:.04em}
+.hl h2{font-family:'Caladea','Cambria','Georgia',serif;font-weight:700;font-size:clamp(1.9rem,3.8vw,3.2rem);letter-spacing:.03em;line-height:1.15;max-width:12em}
+@media(min-width:981px) and (max-width:1360px){.logo span.brand-text{font-size:1.2rem}}
+@media(max-width:980px){.logo span.brand-text{font-size:1.2rem}}
+@media(max-width:420px){.logo span.brand-text{font-size:1.05rem;letter-spacing:.02em}}
