@@ -94,7 +94,7 @@ a{color:inherit}img{max-width:100%;height:auto}:focus-visible{outline:3px solid 
 /* floating buttons: official-style WhatsApp, Email; Siddhi logo for chat */
 .fab{gap:12px}.fab a{width:54px;height:54px;overflow:hidden;transition:transform .25s,box-shadow .25s;animation:pop .6s .8s both}.fab a:hover{transform:scale(1.12) translateY(-3px)}.fab .wa{background:#25d366;position:relative}.fab .wa:after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:rg 2.4s ease-out infinite}.fab .ml{background:#fff;border:1px solid var(--ln)}.fab img{width:100%;height:100%;object-fit:cover}
 @keyframes rg{from{transform:scale(1);opacity:.7}to{transform:scale(1.7);opacity:0}}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.skc-btn{background:#fff!important;border:2px solid var(--amb)!important;padding:6px!important;bottom:154px!important;width:58px!important;height:58px!important;animation:pop .6s 1s both}.skc-btn img{width:100%;height:100%;object-fit:contain}
+.skc-btn{background:#fff!important;border:2px solid var(--amb)!important;padding:6px!important;bottom:154px!important;width:58px!important;height:58px!important;animation:pop .6s 1s both}.skc-btn img{width:100%;height:100%;object-fit:contain}.gm{display:inline-flex;vertical-align:middle;margin-left:6px}.gm svg{width:22px;height:22px;display:block}
 @media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.mt,.fab .wa:after{animation:none}.rv,.hh>div:first-child>*{opacity:1;transform:none;animation:none}.hh h1{-webkit-text-fill-color:var(--ink);background:none}.hs{transition:opacity .3s}}
 @media(max-width:980px){.hm{aspect-ratio:16/11}.wk{min-width:290px}}
 .logo{flex:none}.nav{gap:4px}.nav>a,.dd>button{padding:8px 11px;font-size:13.5px}@media(min-width:981px) and (max-width:1180px){.logo span{font-size:1rem}.nav>a,.dd>button{padding:7px 9px;font-size:13px}}
@@ -110,7 +110,7 @@ a{color:inherit}img{max-width:100%;height:auto}:focus-visible{outline:3px solid 
 /* v5: capital menu, one dropdown at a time, fixed hero panel with centred title, product cards with images */
 .nav>a,.dd>button{text-transform:uppercase;letter-spacing:.03em;font-size:12px;padding:8px 10px}.hin{gap:12px}
 .mn a{text-transform:uppercase;letter-spacing:.02em;font-size:13px}
-@media(min-width:981px) and (max-width:1240px){.hin{gap:8px}.nav{gap:2px}.nav>a,.dd>button{font-size:10.5px;padding:7px 7px;letter-spacing:.01em}.logo span{font-size:.92rem}.logo img{height:40px;width:auto}.tools .btn.sm{padding:8px 12px}.ibtn{width:36px;height:36px}}
+@media(min-width:981px) and (max-width:1360px){.hin{gap:8px}.nav{gap:2px}.nav>a,.dd>button{font-size:10.5px;padding:7px 7px;letter-spacing:.01em}.logo span{font-size:.92rem}.logo img{height:40px;width:auto}.tools .btn.sm{padding:8px 12px}.ibtn{width:36px;height:36px}}
 .hero{padding:26px 0 56px}
 .hm{aspect-ratio:auto;height:clamp(320px,42vw,470px);width:100%;border-radius:26px;background:#130a2e}
 .hm:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(19,10,46,.42),rgba(19,10,46,.66));pointer-events:none}
@@ -144,7 +144,8 @@ a{color:inherit}img{max-width:100%;height:auto}:focus-visible{outline:3px solid 
 .logo{gap:12px}
 .logo img{height:66px;width:auto}
 .logo span{color:var(--amb);font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
-@media(min-width:981px) and (max-width:1240px){.logo img{height:54px}.logo span{font-size:1.1rem}}
+.logo span.brand-text{font-family:'Teko','Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:.01em;display:inline-block;transform:none}
+@media(min-width:981px) and (max-width:1360px){.logo img{height:54px}.logo span{font-size:1.1rem}}
 @media(max-width:980px){.hin{height:76px}.logo img{height:52px}.logo span{font-size:1.15rem}.nav{top:76px}}
 @media(max-width:420px){.logo img{height:46px}.logo span{font-size:1.02rem}}
 
@@ -192,7 +193,7 @@ body[data-page=home] .hd.stk .logo{opacity:1;visibility:visible}
 body[data-page=home] .nav>a,body[data-page=home] .dd>button{background:transparent;border:0;box-shadow:none;color:#fff;text-transform:none;letter-spacing:0;font-size:15px;font-weight:500;padding:8px 13px}
 body[data-page=home] .nav>a:hover,body[data-page=home] .dd>button:hover,body[data-page=home] .dd.on>button{background:rgba(255,255,255,.14);color:#fff;border-color:transparent}
 body[data-page=home] .ibtn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.32);color:#fff}
-@media(min-width:981px) and (max-width:1240px){body[data-page=home] .nav>a,body[data-page=home] .dd>button{font-size:13px;padding:7px 8px}}
+@media(min-width:981px) and (max-width:1360px){body[data-page=home] .nav>a,body[data-page=home] .dd>button{font-size:13px;padding:7px 8px}}
 @media(max-width:1060px){body[data-page=home] .nav{background:#25083f;border-color:rgba(255,255,255,.14)}}
 @media(max-width:980px){body[data-page=home] .hd{margin-bottom:-76px}}
 
@@ -246,3 +247,13 @@ body[data-page=home] .ibtn{background:rgba(255,255,255,.08);border-color:rgba(25
 /* dropdown links must stay dark on the white card (header text is white on home) */
 .mn a{color:var(--ink)}
 .mn a:hover{color:var(--ink)}
+
+/* v21: image-style font only for the menu brand and the business-picker heading */
+.hl h2{font-family:'Teko','Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.02}
+.stats b{font-family:'Outfit','Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.65rem;letter-spacing:.01em;line-height:1.2}
+
+/* v22: keep the header and footer inside narrow / in-between resolutions */
+.ver form{width:100%;max-width:347px}.ver input{flex:1 1 260px;width:auto;max-width:260px;min-width:0}
+@media(max-width:980px){.logo span.brand-text{font-size:1.25rem}}
+@media(max-width:420px){.logo span.brand-text{font-size:1.02rem}}
+@media(min-width:981px) and (max-width:1360px){.logo span.brand-text{font-size:1.1rem}}
