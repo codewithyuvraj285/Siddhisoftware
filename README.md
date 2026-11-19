@@ -46,3 +46,7 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 - The chatbot reads `chatText`, `chatKB` and `chatShow` from `window.SITE_DB.settings` and refreshes on the `sitedata` event; no code edit is needed to change its name, answers or quick replies.
 - Hidden homepage sections use the `hidden` attribute plus `[hidden]{display:none!important}` in `style.css`.
 - All script/style tags use `?v=20` so browsers pick up the new files.
+
+## v21
+- The hero wordmark now uses the single-colour orange logo at `assets/img/siddhi-orange-wordmark.png` instead of the older two-colour `glossy-orange-siddhi-wordmark.png`. Both the backend seed and the server migration set `heroWordImage` to the new file; Admin > Settings can still override it.
+- The Ready solutions section has its own `showSolutions` checkbox in Admin > Settings, unchecked by default.
