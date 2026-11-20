@@ -307,3 +307,16 @@ body[data-page=home] .ibtn{background:rgba(255,255,255,.08);border-color:rgba(25
 @media(min-width:1361px) and (max-width:1600px){.hin{gap:8px}.nav{gap:4px}.nav>a,.dd>button{font-size:12.5px;padding:8px 11px}.logo span.brand-text{font-size:1.3rem}}
 @media(min-width:981px) and (max-width:1180px){.tdemo{display:none}.nav>a.mdemo{display:block!important}}
 @media(min-width:1361px) and (max-width:1600px){.nav{gap:2px}.nav>a,.dd>button{font-size:12px;padding:7px 8px;letter-spacing:0}.logo span.brand-text{font-size:1.15rem}.logo img{height:40px}.tdemo{font-size:12px!important;padding:7px 11px!important}.tools .btn.sm{padding:7px 11px}}
+
+/* v28: capital letters across the site (headings, menus, buttons, labels, card titles). Body paragraphs and article text stay normal for readability. */
+body h1,body h2,body h3,body h4,body h5,
+.nav>a,.dd>button,.dd a,.mn a,
+.btn,.more,.sh a,
+.stats b,.stats span,.rate b,
+.cb small,.pc h3,.svc h3,.card h3,.job h3,
+.hv-word .r,.eyebrow,.tag,.chip,.chips a,.steps b,.plans h3,
+footer h4,footer h3,footer .fh,label,th{text-transform:uppercase}
+body h1,body h2,body h3,body h4{letter-spacing:.02em}
+.stats b{letter-spacing:.03em}
+.body h1,.body h2,.body h3,.body h4,.body label,.body th{text-transform:none;letter-spacing:-.01em}
+.hv-word .m{text-transform:lowercase}
