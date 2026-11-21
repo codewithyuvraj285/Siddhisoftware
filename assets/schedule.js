@@ -25,7 +25,7 @@ const fLong=(d,z)=>new Intl.DateTimeFormat('en-US',{timeZone:z,weekday:'long',mo
 const fFull=(d,z)=>new Intl.DateTimeFormat('en-US',{timeZone:z,weekday:'long',month:'long',day:'numeric',year:'numeric'}).format(d);
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-let all=[],booked=new Set(),st={y:0,m:0,key:'',slot:null,step:1,guests:false};
+let all=[],booked=new Set(),st={y:0,m:0,key:'',slot:null,step:1,guests:false,apiDown:false};
 /* every bookable slot as a real moment in time (IST working hours) */
 function build(){
   all=[];const now=Date.now(),min=now+SCH.noticeHours*36e5,t0=new Date(now+IST);
@@ -37,6 +37,10 @@ function build(){
       const ts=Date.UTC(day.getUTCFullYear(),day.getUTCMonth(),day.getUTCDate())+t*MIN-IST;
       if(ts>=min&&!booked.has(new Date(ts).toISOString()))all.push(ts)}}
 }
+/* WhatsApp fallback: if online booking cannot reach the server, the visitor can still send the chosen slot to the team */
+const waNum=()=>{const s=(window.SITE_DB&&window.SITE_DB.settings)||{};return String(s.whatsapp||s.phone||'').replace(/\D/g,'')};
+const waLink=d=>{const n=waNum();if(!n)return'';const t=['Demo booking request','Time (IST): '+fFull(new Date(st.slot),'Asia/Kolkata')+', '+fTime(new Date(st.slot),'Asia/Kolkata'),'Name: '+d.name,'Phone: '+d.phone,'Email: '+d.email,d.service?'Interested in: '+d.service:'',d.message?'Notes: '+d.message:''].filter(Boolean).join('\n');return'https://wa.me/'+n+'?text='+encodeURIComponent(t)};
+const warn=()=>st.apiDown?'<p class="swarn" role="alert" style="background:var(--tint);border:1px solid var(--amb);border-radius:10px;padding:10px 14px;margin:0 0 16px;font-size:14px">Online booking is temporarily unavailable. You can still choose a time; we will give you a WhatsApp button to confirm it with our team.</p>':'';
 const byKey=()=>{const o={};for(const ts of all){const k=fKey(new Date(ts),tz);(o[k]=o[k]||[]).push(ts)}return o};
 const root=()=>document.getElementById('sch');
 const left=extra=>`<div class="sl"><p class="sbn">${esc((window.SITE_DB&&window.SITE_DB.settings&&window.SITE_DB.settings.brand)||'Siddhi Softwares')}</p><h1>${esc(SCH.title)}</h1><p class="si"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${SCH.minutes} min</p><p class="si"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>Web conferencing details provided upon confirmation.</p>${extra||''}</div>`;
@@ -57,7 +61,7 @@ function times(){
 }
 function step1(){
   const r=root();r.className='sch'+(st.key?' wide':'');
-  r.innerHTML=left()+`<div class="sr"><h2>Select a Date &amp; Time</h2><div class="sx"><div class="sc1">${cal()}</div>${st.key?times():''}</div></div>`;
+  r.innerHTML=left()+`<div class="sr">${warn()}<h2>Select a Date &amp; Time</h2><div class="sx"><div class="sc1">${cal()}</div>${st.key?times():''}</div></div>`;
   r.querySelectorAll('.d.ok').forEach(b=>b.onclick=()=>{st.key=b.dataset.k;st.slot=null;step1()});
   r.querySelectorAll('.t').forEach(b=>b.onclick=()=>{st.slot=+b.dataset.t;step1()});
   const nx=r.querySelector('#nxt');if(nx)nx.onclick=()=>{st.step=2;step2()};
@@ -72,15 +76,26 @@ function step2(){
   const r=root();r.className='sch';
   const s=(window.SITE_DB&&window.SITE_DB.items||[]).filter(i=>(i.type==='product'||i.type==='service')&&i.published!==false);
   const pre=new URLSearchParams(location.search).get('for')||'';
-  r.innerHTML=left('').replace('<div class="sl">','<div class="sl"><button type="button" class="bk" id="bk" aria-label="Back">←</button>').replace('</div>',info()+'</div>')+`<div class="sr"><h2>Enter Details</h2><form id="sf" class="form sf"><label>Name *<input name="name" required maxlength="80" autocomplete="name"></label><label>Email *<input name="email" type="email" required maxlength="120" autocomplete="email"></label><label>Phone *<input name="phone" type="tel" required maxlength="20" autocomplete="tel"></label><label>Which solution do you want to see?<select name="service"><option value="">Not sure yet</option>${s.map(i=>`<option${i.title===pre?' selected':''}>${esc(i.title)}</option>`).join('')}</select></label><div id="gw">${st.guests?'<label>Guest emails (comma separated)<input name="guests" maxlength="200"></label>':'<button type="button" class="btn ghost sm" id="ag">Add guests</button>'}</div><label>Please share anything that will help prepare for our meeting.<textarea name="message" rows="3" maxlength="500"></textarea></label><input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="tos">By proceeding, you confirm that we may contact you about this demo.</p><button class="btn" id="go">Schedule Event</button><p class="msg" id="sm" role="status"></p></form></div>`;
+  r.innerHTML=left('').replace('<div class="sl">','<div class="sl"><button type="button" class="bk" id="bk" aria-label="Back">←</button>').replace('</div>',info()+'</div>')+`<div class="sr">${warn()}<h2>Enter Details</h2><form id="sf" class="form sf"><label>Name *<input name="name" required maxlength="80" autocomplete="name"></label><label>Email *<input name="email" type="email" required maxlength="120" autocomplete="email"></label><label>Phone *<input name="phone" type="tel" required maxlength="20" autocomplete="tel"></label><label>Which solution do you want to see?<select name="service"><option value="">Not sure yet</option>${s.map(i=>`<option${i.title===pre?' selected':''}>${esc(i.title)}</option>`).join('')}</select></label><div id="gw">${st.guests?'<label>Guest emails (comma separated)<input name="guests" maxlength="200"></label>':'<button type="button" class="btn ghost sm" id="ag">Add guests</button>'}</div><label>Please share anything that will help prepare for our meeting.<textarea name="message" rows="3" maxlength="500"></textarea></label><input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="tos">By proceeding, you confirm that we may contact you about this demo.</p><button class="btn" id="go">Schedule Event</button><p class="msg" id="sm" role="status"></p></form></div>`;
   r.querySelector('#bk').onclick=()=>{st.step=1;step1()};
   const ag=r.querySelector('#ag');if(ag)ag.onclick=()=>{st.guests=true;ag.parentNode.innerHTML='<label>Guest emails (comma separated)<input name="guests" maxlength="200"></label>'};
   const f=r.querySelector('#sf'),m=r.querySelector('#sm'),go=r.querySelector('#go');
   f.onsubmit=async e=>{e.preventDefault();m.textContent='';const d=Object.fromEntries(new FormData(f));go.disabled=true;
     const msg=['DEMO BOOKING','Slot (IST): '+fFull(new Date(st.slot),'Asia/Kolkata')+', '+fTime(new Date(st.slot),'Asia/Kolkata')+' - '+fTime(new Date(st.slot+SCH.minutes*MIN),'Asia/Kolkata'),'Customer time zone: '+tz+' ('+fTime(new Date(st.slot),tz)+')',d.guests?'Guests: '+d.guests:'',d.message?'Notes: '+d.message:''].filter(Boolean).join('\n');
-    try{if(!API)throw 1;const x=await fetch(API+'/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,email:d.email,phone:d.phone,service:'Demo: '+(d.service||'General'),message:msg,website:d.website,slot:new Date(st.slot).toISOString()})});
-      if(x.status===409){booked.add(new Date(st.slot).toISOString());st.slot=null;st.step=1;init(true);alert('Sorry, this time was just booked. Please pick another time.');return}
-      if(!x.ok)throw 0;done(d)}catch(err){go.disabled=false;m.textContent=API?'Could not schedule. Please call or WhatsApp us.':'Demo mode: connect the backend (config.js) to receive bookings.'}};
+    let x=null;
+    try{if(!API)throw 1;x=await fetch(API+'/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,email:d.email,phone:d.phone,service:'Demo: '+(d.service||'General'),message:msg,website:d.website,slot:new Date(st.slot).toISOString()})})}catch(err){x=null}
+    if(x&&x.ok){st.apiDown=false;return done(d)}
+    if(x&&x.status===409){booked.add(new Date(st.slot).toISOString());st.slot=null;st.step=1;init(true);alert('Sorry, this time was just booked. Please pick another time.');return}
+    go.disabled=false;
+    let why=!API?'Online booking is not connected yet.':'We could not reach the booking server.';
+    if(x&&x.status===429)why='Too many requests from your network. Please wait a few minutes and try again.';
+    else if(x&&x.status===400){let j={};try{j=await x.json()}catch(e){}
+      if(/time/i.test(j.error||'')){st.slot=null;st.step=1;init(true);alert('This time is no longer available. Please pick another time.');return}
+      why=(j.error||'Please check your details')+'.'}
+    else if(x)why='The booking server had a problem.';
+    const wa=waLink(d);
+    m.innerHTML=esc(why)+(wa?' <a href="'+esc(wa)+'" target="_blank" rel="noopener">Send this booking request on WhatsApp</a>':' Please call us to confirm your time.');
+  };
 }
 const pad=n=>String(n).padStart(2,'0'),iso=ts=>{const d=new Date(ts);return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+'00Z'};
 function done(d){
@@ -91,7 +106,8 @@ function done(d){
   r.innerHTML=`<div class="cf"><div class="ck" aria-hidden="true">✓</div><h2>Your meeting is successfully scheduled</h2><p class="mu">A confirmation will be sent to ${esc(d.email)}. We will share the meeting link before the demo.</p><div class="cb"><h3>${esc(SCH.title)}</h3><p class="si"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${SCH.minutes} min</p>${info()}</div><div class="acts" style="justify-content:center"><a class="btn sm" href="${esc(g)}" target="_blank" rel="noopener">Add to Google Calendar</a><a class="btn ghost sm" download="siddhi-demo.ics" href="data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}">Download .ics</a><a class="btn ghost sm" href="index.html">Back to home</a></div></div>`;
 }
 async function init(keep){
-  if(!keep&&API){try{const r=await fetch(API+'/api/booked',{cache:'no-store'});if(r.ok)booked=new Set(await r.json())}catch(e){}}
+  if(!keep&&API){try{const r=await fetch(API+'/api/booked',{cache:'no-store'});if(r.ok){booked=new Set(await r.json());st.apiDown=false}else st.apiDown=true}catch(e){st.apiDown=true}}
+  if(!API)st.apiDown=true;
   build();
   if(!keep||!st.y){const k=Object.keys(byKey()).sort()[0]||fKey(new Date(),tz);st.y=+k.slice(0,4);st.m=+k.slice(5,7)-1}
   else{const k=Object.keys(byKey()).sort()[0];if(k){st.y=+k.slice(0,4);st.m=+k.slice(5,7)-1}}

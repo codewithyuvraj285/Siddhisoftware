@@ -115,6 +115,8 @@ function user(t){t=t.trim();if(!t||busy)return;S.msgs.push({role:'customer',text
  if(is(t,'quoteAsk','Get a quote')||is(t,'talkAsk','Talk to our team')||is(t,'callBack','Yes, call me back')||eq(t,'get a quote')||eq(t,'talk to our team')||eq(t,'yes, call me back')||eq(t,'call me back')){S.step='name';S.lead={};return later(T('nameAsk','Happy to help. What is your name?'))}
  if(q[0]&&eq(t,q[0]))return later(T('services','We offer: {list}.').replace('{list}',list('service')),[T('mobileAsk','Mobile apps'),T('quoteAsk','Get a quote')]);
  if(q[1]&&eq(t,q[1]))return later(T('solutions','Ready solutions: {list}.').replace('{list}',list('solution')),[T('quoteAsk','Get a quote')]);
+ if(eq(t,T('demoOpen','Open demo calendar'))){location.href='schedule.html';return}
+ if(re('wordsDemo','demo|meeting|schedule|appointment|book a call|video call|zoom|google meet').test(t))return later(T('demoMsg','You can book a free 30-minute demo with our team. Choose a date and time on our demo calendar.'),[T('demoOpen','Open demo calendar'),T('quoteAsk','Get a quote')]);
  const m=match(t);if(m)return later(m[0],m[1]);
  later(T('fallback','I could not find that on our website. Would you like our team to call you back?'),[T('callBack','Yes, call me back'),q[0]])}
 function open(){const p=$('skp');p.hidden=false;$('skb').hidden=true;
