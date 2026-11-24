@@ -320,3 +320,38 @@ body h1,body h2,body h3,body h4{letter-spacing:.02em}
 .stats b{letter-spacing:.03em}
 .body h1,.body h2,.body h3,.body h4,.body label,.body th{text-transform:none;letter-spacing:-.01em}
 .hv-word .m{text-transform:lowercase}
+
+/* ===== v31: loader + responsive hardening (all phones, tablets, laptops) ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden;min-width:320px}@supports(overflow:clip){body{overflow-x:clip}}
+img,video,canvas,iframe,svg{max-width:100%}
+h1,h2,h3,h4,p,li,td,th,a,span,small,b{overflow-wrap:break-word}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.boot{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:40px 20px;font:600 15px/1.5 system-ui,sans-serif;color:var(--mut)}
+.boot i{width:38px;height:38px;border-radius:50%;border:4px solid var(--ln);border-top-color:var(--amb);animation:bootspin .8s linear infinite}
+@keyframes bootspin{to{transform:rotate(360deg)}}
+.logo{min-width:0}.logo span{white-space:nowrap}
+.mn>div{width:min(340px,calc(100vw - 32px))}
+.ft p{overflow-wrap:anywhere}
+.soc{gap:10px}.soc a{display:inline-block;padding:7px 15px;border:1.5px solid var(--ln);border-radius:999px;text-decoration:none;font-size:14px;transition:background .2s,border-color .2s}.soc a:hover{background:var(--amb);border-color:var(--amb);color:#130a2e}
+@media(max-width:980px){
+.nav{max-height:calc(100vh - 92px);max-height:calc(100dvh - 92px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.mn{position:static;padding-top:6px}.mn>div{width:100%;box-shadow:none}
+.sec{padding:56px 0}
+}
+@media(max-width:560px){
+.fl{columns:1}
+.sec{padding:46px 0}
+.stats{padding:22px 14px;grid-template-columns:1fr 1fr}.stats b{font-size:1.7rem}
+.sh{flex-direction:column;align-items:flex-start}
+.acts .btn{flex:1 1 auto;text-align:center}
+.fab{right:12px;bottom:12px}.fab a{width:48px;height:48px}
+.g,.g3{grid-template-columns:minmax(0,1fr)}
+.tools .btn.sm:not(.tdemo){display:none}
+}
+@media(max-width:380px){
+.hin{gap:8px}.tools{gap:6px}.ibtn{width:36px;height:36px}
+.logo img{height:40px;width:auto}.logo span,.logo span.brand-text{font-size:.95rem}
+.stats{grid-template-columns:1fr}
+}
