@@ -50,3 +50,9 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 ## v21
 - The hero wordmark now uses the single-colour orange logo at `assets/img/siddhi-orange-wordmark.png` instead of the older two-colour `glossy-orange-siddhi-wordmark.png`. Both the backend seed and the server migration set `heroWordImage` to the new file; Admin > Settings can still override it.
 - The Ready solutions section has its own `showSolutions` checkbox in Admin > Settings, unchecked by default.
+
+## v31
+- Official links added: Instagram, Facebook, YouTube (footer buttons + Organization schema), phone +91 9039065247, email support@siddhisoftwares.com. All editable in Admin > Settings > Social and trust / Brand and contact. Existing databases get these values once on first start; later edits in Admin are kept.
+- Faster and safer loading: first-paint loader, 8 s backend timeout (falls back to demo content), demo-data.js is loaded only when the backend is unreachable, images below the top of the page load lazily, a render error shows a Reload button instead of a blank page.
+- Responsive fixes for small phones (320 px+), tablets and laptops: no sideways scrolling, mobile menu scrolls and opens dropdowns inline, "Quotation" moved into the mobile menu, footer links stack on phones.
+- Logo, favicon and hero wordmark compressed (about 1.2 MB less per visit), no visible change.
