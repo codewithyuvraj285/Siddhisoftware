@@ -68,7 +68,7 @@ function mock(){return`<div class="win" aria-hidden="true"><div class="wb"><i></
 function home(){const s=db.settings,st=lines(s.stats),pr=lines(s.process),pl=pub('plan'),cl=pub('client'),ts=pub('testimonial'),rt=lines(s.ratings),jb=pub('job').slice(0,4),cs=pub('casestudy').slice(0,3),po=pub('post').slice(0,3);
 const lg=cl.map(c=>`<div class="lg"><img src="${esc(c.image)}" alt="${esc(c.title)}"></div>`).join('');
 return layout(`${heroV()}
-<div class="w"><div class="stats" ${secOn('stats')?'':'hidden'}>${st.map(a=>`<div><b>${esc(a[0])}</b><span>${esc(a[1]||'')}</span></div>`).join('')}</div></div>
+<div class="w"><div class="stats" ${secOn('stats')?'':'hidden'}>${st.map(a=>{const sv=db.items.find(i=>i.type==='service'&&i.title.trim().toLowerCase()===String(a[0]).trim().toLowerCase()),r=/^\d+(\.\d+)?$/.test(String(a[0]).trim());return`<${sv?'a href="'+url(sv)+'"':'div'} class="st${r?' rt':''}"><b>${esc(a[0])}${r?' <em>★</em>':''}</b><span>${esc(a[1]||(sv?'Learn more':''))}</span>${sv?'<i aria-hidden="true">→</i>':''}</${sv?'a':'div'}>`}).join('')}</div></div>
 <section class="pick"><div class="w">${heroX()}</div></section>
 ${pub('product').length?`<section class="sec" id="products" ${secOn('products')?'':'hidden'}><div class="w"><div class="sh"><div><h2>${esc(s.productsTitle||'Our products')}</h2>${s.productsSub?`<p class="lead" style="margin:0">${esc(s.productsSub)}</p>`:''}</div><a href="${lst('product')}">${TV('viewAll','View all')} ›</a></div><div class="g pg">${pub('product').slice(0,12).map(prod).join('')}</div></div></section>`:''}
 <section class="sec soft" ${secOn('services')?'':'hidden'}><div class="w">${head(SV('headService','What we do'),'service')}<div class="g">${pub('service').map(svc).join('')}</div></div></section>
