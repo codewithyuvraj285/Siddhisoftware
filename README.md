@@ -56,3 +56,11 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 - Faster and safer loading: first-paint loader, 8 s backend timeout (falls back to demo content), demo-data.js is loaded only when the backend is unreachable, images below the top of the page load lazily, a render error shows a Reload button instead of a blank page.
 - Responsive fixes for small phones (320 px+), tablets and laptops: no sideways scrolling, mobile menu scrolls and opens dropdowns inline, "Quotation" moved into the mobile menu, footer links stack on phones.
 - Logo, favicon and hero wordmark compressed (about 1.2 MB less per visit), no visible change.
+
+## v36: landing pages instead of long product blogs
+- The 4 products (Transport Industry, Power Sector, Educational Sector, Hotel Booking Engines) now open as landing pages: hero with image and floating chips, 4-step workflow, laptop dashboard (numbers count up, chart draws), "Our Industry Solutions" cards, "See It in Action" video banner, then FAQs. All with scroll motion; motion is switched off for visitors who prefer reduced motion.
+- Thumbnails / hero images: `assets/img/landing/transport.jpg, power.jpg, education.jpg, hotel.jpg` (or change from Admin > Products > Main image). The hotel thumbnail is currently the hospital photo, replace it.
+- Video: Admin > Products > edit > "LANDING PAGE VIDEO" (upload MP4/WebM or paste a link, YouTube works). Every Watch Video / play button opens it in a pop-up. Empty = "Video coming soon" pop-up.
+- The old long text is still saved in "Content (HTML)" but is not shown on these pages.
+- Home "Products" section and the Products list page use the same new cards plus a "View all products" button.
+- Code: `landing()`, `lcard()` and `wireLanding()` in app.js; styles at the end of style.css (`.lp-*`); data in `../backend/landing-v36.js`.
