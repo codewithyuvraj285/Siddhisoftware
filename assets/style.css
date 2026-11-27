@@ -683,8 +683,6 @@ html body .hd .mg-c a{text-transform:none;letter-spacing:.01em;font-size:14px;fo
 .hv-left{gap:34px}
 @media(max-width:560px){.hv-left{gap:22px}.hv-eye{font-size:10px;letter-spacing:.08em;padding:8px 12px;text-align:center}}
 
-/* v40: flowing wave ribbon replaces the floating chips */
+/* v40: hide removed hero chips */
 .hv-float,.hv-eye{display:none!important}
 .hv-left{gap:20px}
-.hv-wave{position:absolute;left:0;right:0;bottom:clamp(36px,9vh,96px);width:100%;height:clamp(180px,30vh,290px);z-index:1;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-@media(max-width:900px){.hv-wave{height:150px;bottom:30px;opacity:.8}}
