@@ -885,11 +885,3 @@ a.ft2-c:hover{transform:translateX(6px);border-color:#f6a200;background:linear-g
 html,body,body *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp){font-family:'Caladea',Cambria,Georgia,'Noto Sans Devanagari',serif!important}
 body h1,body h2,body h3,body h4,body h5,body h6,body strong,body b{font-weight:700}
 body h1,body h2,body h3,body h4{letter-spacing:.01em}
-
-/* ===== v52: lighter home + calmer landing pages ===== */
-.lp-card.noimg{min-height:0}.lp-card.noimg .lp-cbody{padding-top:22px}
-.lp-chip{display:none!important}
-.lp-photo{animation:lpPhoto 1.2s cubic-bezier(.2,.7,.2,1) backwards!important}
-.lp-bg i,.lp-act,.lp-act:before,.lp-act>i,.cta:before,.lp em,.lp-hd em,.lp-h1 em,.lp-pc em,.lp-sic:after,.lp-pb:after,.lp-bigplay:before,.lp-bigplay:after,.lp-play:before{animation:none!important}
-.lp-card.noimg .lp-cbody{padding:22px 20px 20px!important;min-height:0}
-.lp-card.noimg .lp-cic{position:static;width:48px;height:48px;margin:0 0 12px;border:0;box-shadow:none}
