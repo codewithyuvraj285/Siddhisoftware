@@ -724,3 +724,5 @@ html body .hd .mg-c a{text-transform:none;letter-spacing:.01em;font-size:14px;fo
 .hv-note{background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(18,5,44,.32));border-color:rgba(255,255,255,.2);box-shadow:0 30px 70px rgba(10,2,30,.45),inset 0 1px 0 rgba(255,255,255,.28)}
 @media(min-width:1281px) and (max-width:1440px){body[data-page] .nav>a,body[data-page] .dd>button{padding:12px 6px;font-size:11px;letter-spacing:.05em}.hd .hin{gap:6px}}
 @media(min-width:1441px){.hd .hin{max-width:1500px;gap:8px}body[data-page] .nav>a,body[data-page] .dd>button{padding:12px 8px}}
+/* v49: Hindi heading was clipped on top by the gradient text box */
+.hv-note .hv-dev{line-height:1.6;padding:.28em .08em .22em;margin-bottom:8px;overflow:visible;display:inline-block}
