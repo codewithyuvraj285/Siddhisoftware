@@ -878,3 +878,10 @@ a.ft2-c:hover{transform:translateX(6px);border-color:#f6a200;background:linear-g
 @keyframes ft2float{0%,100%{translate:0 0}50%{translate:0 -7px}}
 @media(max-width:700px){.ft2-stk{justify-content:center;gap:6px;height:calc(64px + (var(--n,6) - 1) * 22px)}.ft2-stk span{width:40px;height:calc(64px + var(--i) * 22px);padding-top:10px}.ft2-stk b{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.ft2-stk.rdy span,.ft2-stk.rdy.in span{animation:none!important;transform:none!important}}
+
+/* ===== v51: ONE font for the whole website = the Siddhi Softwares brand font (Caladea, bold serif) =====
+   Everything, including blog posts, descriptions and titles added later from Admin, uses it. */
+:root{--f:'Caladea',Cambria,Georgia,'Noto Sans Devanagari',serif}
+html,body,body *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp){font-family:'Caladea',Cambria,Georgia,'Noto Sans Devanagari',serif!important}
+body h1,body h2,body h3,body h4,body h5,body h6,body strong,body b{font-weight:700}
+body h1,body h2,body h3,body h4{letter-spacing:.01em}
