@@ -686,3 +686,10 @@ html body .hd .mg-c a{text-transform:none;letter-spacing:.01em;font-size:14px;fo
 /* v40: hide removed hero chips */
 .hv-float,.hv-eye{display:none!important}
 .hv-left{gap:20px}
+
+/* v43: plus / minus icon instead of the arrow on menu dropdowns */
+.dd-i{position:relative;display:inline-block;flex:none;width:9px;height:9px;margin-left:8px;vertical-align:middle}
+.dd-i:before,.dd-i:after{content:"";position:absolute;background:currentColor;border-radius:2px;transition:transform .25s ease,opacity .25s}
+.dd-i:before{left:0;right:0;top:50%;height:1.6px;margin-top:-.8px}
+.dd-i:after{top:0;bottom:0;left:50%;width:1.6px;margin-left:-.8px}
+.dd:hover .dd-i:after,.dd.on .dd-i:after{transform:scaleY(0);opacity:0}
