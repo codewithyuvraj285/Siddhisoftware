@@ -64,3 +64,16 @@ No build step. Pages: index.html, list.html?t=service, detail.html?t=post&s=slug
 - The old long text is still saved in "Content (HTML)" but is not shown on these pages.
 - Home "Products" section and the Products list page use the same new cards plus a "View all products" button.
 - Code: `landing()`, `lcard()` and `wireLanding()` in app.js; styles at the end of style.css (`.lp-*`); data in `../backend/landing-v36.js`.
+
+## v50: one landing design for every page
+- All pages (products, services, solutions, industries, case studies, blog posts, jobs, About, locations, list pages, Contact, Schedule) now use the Transport-Industry landing design: hero with photo and floating chips, 4-step cards, laptop dashboard, cards, "Ready to start" banner. Code: `landing()` + `derive()` in app.js (service/industry/solution steps and chips are read from the existing page content automatically; product/case-study fields from Admin still win).
+- Images: all "creative" SVG covers and the old tech PNGs were removed. Real photos were cropped to 16:10 into `assets/img/p/`. `backend/images-v50.js` maps them to every item (Admin-uploaded images are kept).
+- Fonts: only Plus Jakarta Sans (light uppercase headings; the header menu, buttons and labels use the "PRODUCT" label style). Teko / Caladea / Outfit removed.
+- New footer (contact cards, social icon buttons, moving words band). Careers section removed from the Home page (menu and footer links stay). The sliding light beam and scroll line in the hero were removed.
+- Cache version is `?v=50`.
+
+## v51: everything controlled from the backend
+- Labels that were still in code (Call us / Email us / Visit us, Learn more, contact + schedule headings, chips and every text of the Schedule a Demo calendar) now come from Admin > Settings > "Website labels" (`siteText`). Missing keys fall back to the built-in English text.
+- Schedule a Demo availability (demo length, weekdays, working hours, break, days ahead, minimum notice, time-zone list) comes from Admin > Settings > "Schedule a Demo". `assets/schedule.js` keeps defaults only as a safety net.
+- Contact page and Schedule page pictures: Admin > Settings > Schedule section (`contactImage`, `scheduleImage`).
+- Cache version is `?v=51`.
